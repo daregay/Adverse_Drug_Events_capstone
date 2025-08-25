@@ -2,7 +2,10 @@
 
 Binary text classifier for Adverse Drug Events (ADE) in short clinical/biomedical sentences.  
 Selection policy is recall-first: choose a validation threshold to reach recall ≥ 0.90, then score the test set at that fixed threshold.  
-**Final model:** PubMedBERT. For the full narrative report (plots + commentary), see **[00_main.ipynb][nb00]**.
+**Final model:** PubMedBERT. For the full narrative report (plots + commentary), see **[00_main.ipynb][nb00]** 
+
+[00_main.ipynb (GitHub)](notebooks/00_main.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1VdvHcuBEOoNfz0m4SP5nCG6Mx95_i3kW?usp=sharing)
+
 
 ---
 
@@ -16,7 +19,6 @@ Selection policy is recall-first: choose a validation threshold to reach recall 
 - [Key Figures](#key-figures)
 - [Deployment](#deployment)
 - [Acknowledgments](#acknowledgments)
-- [License](#license)
 
 ---
 
@@ -37,57 +39,64 @@ Selection policy is recall-first: choose a validation threshold to reach recall 
 
 ---
 
-## Project Structure
-Final_project/
-├─ 00_main.ipynb # Narrative report notebook (mirrors this README)
-├─ 01_Data_Prep.ipynb # Cleaning, leakage guard, stratified split
-├─ 02_eda.ipynb # Exploratory data analysis
-├─ 03_Baselines_TFIDF_LR_SVM.ipynb
-├─ 04_transformer_distilbert.ipynb
-├─ 05_transformer_biobert.ipynb
-├─ 06_pubmedbert_training.ipynb
-├─ 07_model_comparison.ipynb # Aggregates metrics and picks the winner
+## Repo structure
+```text
+Adverse_Drug_Events_capstone/
+├─ notebooks/
+│  ├─ 00_main.ipynb  # narrative summary & figures
+│  ├─ 01_Data_Prep.ipynb # load/clean, splits
+│  ├─ 02_eda.ipynb  # class balance, lengths, examples
+│  ├─ 03_Baselines_TFIDF_LR_SVM.ipynb #tf-idf base models 
+│  ├─ 04_transformer_distilbert.ipynb # transformer encoder models
+│  ├─ 05_transformer_biobert.ipynb # transformer encoder models
+│  ├─ 06_pubmedbert_training.ipynb # transformer encoder models
+│  └─ 07_model_comparison.ipynb # metrics, curves, calibration, thresholds
 ├─ src/
-│ ├─ utilities.py
-│ ├─ hf_utils.py
-│ └─ plots.py
-├─ artifacts/
-│ ├─ baselines/
-│ │ └─ tfidf/ # val/test probability CSVs for LR and SVM
-│ └─ transformers/
-│ ├─ distilbert/
-│ ├─ biobert/
-│ └─ pubmedbert/ # saved model, preds, thresholds, metrics
-│ └─ comparison/
-│ └─ all_models_summary.csv # used in Notebook 7 and 00_main
-└─ plots/
-├─ eda_*.png
-├─ comparison/
-│ ├─ cmp_precision_recall_bars.png
-│ └─ cmp_error_composition_val_test.png
-├─ pubmed_val_test_pr_roc_grid.png
-├─ pubmed_test_confusion.png
-└─ pubmed_test_calib_and_hist.png
+│  ├─ __init__.py
+│  ├─ utilities.py
+│  ├─ hf_utils.py
+│  └─ plots.py
+├─ app.py  # optional local demo
+├─ data/  # (ignored) keep small samples only
+├─ artifacts/  # (ignored) preds/thresholds/metrics
+├─ models/  # (ignored) checkpoints (if any)
+├─ plots/  # generated figures
+├─ requirements.txt
+└─ README.md
 
 
 
 ---
 
 ## Getting Started
-**Fastest:** open **[00_main.ipynb][nb00]** in Colab.  
-**Local:** `pip install -r requirements.txt` (Python 3.10+), then run notebooks in order.
+**Fastest:** open **[00_main.ipynb (GitHub)](notebooks/00_main.ipynb)** or **[Open in Colab](https://colab.research.google.com/drive/1VdvHcuBEOoNfz0m4SP5nCG6Mx95_i3kW?usp=sharing)**.  
+**Local:** `pip install -r requirements.txt` (Python 3.10 or newer), then run notebooks in order.
 
 ---
 
 ## Reproduce
-Run these (in order) or open in Colab:
-1. **Data prep:** [01_Data_Prep][nb01]  
-2. **EDA:** [02_eda][nb02]  
-3. **Models:** [03 Baselines][nb03], [04 DistilBERT][nb04], [05 BioBERT][nb05], [06 PubMedBERT][nb06]  
-4. **Compare & select:** [07_model_comparison][nb07]  
-5. Return to **[00_main][nb00]** to render the final report.
+Run these in order, choosing either the GitHub view or the Colab link.
+
+1. **Data prep:**  
+   [01_Data_Prep.ipynb (GitHub)](notebooks/01_Data_Prep.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1sLuzWFUAwlSKXFqqI851ZwTSgdnUzPzp)
+
+2. **EDA:**  
+   [02_eda.ipynb (GitHub)](notebooks/02_eda.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1ixGcdCv_moL-CagZ51qLHigC-btEgLCk)
+
+3. **Models:**  
+   [03_Baselines_TFIDF_LR_SVM.ipynb (GitHub)](notebooks/03_Baselines_TFIDF_LR_SVM.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1swGOnQTKFJ7AdwWeURLvads2kpBqzPDn)  
+   [04_transformer_distilbert.ipynb (GitHub)](notebooks/04_transformer_distilbert.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1UgOQA5L0S4m-OsTCVY9f7aONCPcykmDV)  
+   [05_transformer_biobert.ipynb (GitHub)](notebooks/05_transformer_biobert.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1LQNZSgwLzN2GjOGNEZjUZJfOsTvFC6yl)  
+   [06_pubmedbert_training.ipynb (GitHub)](notebooks/06_pubmedbert_training.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1C3idcaweut3V4hxMf5zcCIPhbJTmDJVb)
+
+4. **Compare and select:**  
+   [07_model_comparison.ipynb (GitHub)](notebooks/07_model_comparison.ipynb) | [Open in Colab](https://colab.research.google.com/drive/13uH5BAeFE8lAn_SQUXn-fzp_viRNqXMh)
+
+5. Return to the main report:  
+   [00_main.ipynb (GitHub)](notebooks/00_main.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1VdvHcuBEOoNfz0m4SP5nCG6Mx95_i3kW?usp=sharing)
 
 Artifacts produced include: `preds/val_probs.csv`, `preds/test_probs.csv`, `thresholds.json`, per-model `metrics_*.json`, and `artifacts/comparison/all_models_summary.csv`.
+
 
 ---
 
@@ -127,7 +136,7 @@ Full table: `artifacts/comparison/all_models_summary.csv`.
 
 ---
 
-## Notebooks
+## Notebooks Colab
 - **00 — Main report** — [Colab](https://colab.research.google.com/drive/1VdvHcuBEOoNfz0m4SP5nCG6Mx95_i3kW?usp=sharing)
 - **01 — Data prep and split** — [Colab](https://colab.research.google.com/drive/1sLuzWFUAwlSKXFqqI851ZwTSgdnUzPzp)
 - **02 — EDA** — [Colab](https://colab.research.google.com/drive/1ixGcdCv_moL-CagZ51qLHigC-btEgLCk)
