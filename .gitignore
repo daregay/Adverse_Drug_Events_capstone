@@ -1,0 +1,6 @@
+artifacts/
+plots/
+*.pt
+*.safetensors
+*.pickle
+.ipynb_checkpoints/
