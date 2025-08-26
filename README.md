@@ -4,7 +4,7 @@ Binary text classifier for Adverse Drug Events (ADE) in short clinical/biomedica
 Selection policy is recall-first: choose a validation threshold to reach recall ≥ 0.90, then score the test set at that fixed threshold.  
 **Final model:** PubMedBERT. For the full narrative report (plots + commentary), see **[00_main.ipynb][nb00]** 
 
-[00_main.ipynb (GitHub)](notebooks/00_main.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1VdvHcuBEOoNfz0m4SP5nCG6Mx95_i3kW?usp=sharing)
+[00_main.ipynb (GitHub)](00_main.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1VdvHcuBEOoNfz0m4SP5nCG6Mx95_i3kW?usp=sharing)
 
 
 ---
@@ -63,13 +63,12 @@ Adverse_Drug_Events_capstone/
 ├─ plots/  # generated figures
 ├─ requirements.txt
 └─ README.md
-
-
+```
 
 ---
 
 ## Getting Started
-**Fastest:** open **[00_main.ipynb (GitHub)](notebooks/00_main.ipynb)** or **[Open in Colab](https://colab.research.google.com/drive/1VdvHcuBEOoNfz0m4SP5nCG6Mx95_i3kW?usp=sharing)**.  
+**Fastest:** open **[00_main.ipynb (GitHub)](00_main.ipynb)** or **[Open in Colab](https://colab.research.google.com/drive/1VdvHcuBEOoNfz0m4SP5nCG6Mx95_i3kW?usp=sharing)**.  
 **Local:** `pip install -r requirements.txt` (Python 3.10 or newer), then run notebooks in order.
 
 ---
@@ -78,22 +77,22 @@ Adverse_Drug_Events_capstone/
 Run these in order, choosing either the GitHub view or the Colab link.
 
 1. **Data prep:**  
-   [01_Data_Prep.ipynb (GitHub)](notebooks/01_Data_Prep.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1sLuzWFUAwlSKXFqqI851ZwTSgdnUzPzp)
+   [01_Data_Prep.ipynb (GitHub)](01_Data_Prep.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1sLuzWFUAwlSKXFqqI851ZwTSgdnUzPzp)
 
 2. **EDA:**  
-   [02_eda.ipynb (GitHub)](notebooks/02_eda.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1ixGcdCv_moL-CagZ51qLHigC-btEgLCk)
+   [02_eda.ipynb (GitHub)](02_eda.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1ixGcdCv_moL-CagZ51qLHigC-btEgLCk)
 
 3. **Models:**  
-   [03_Baselines_TFIDF_LR_SVM.ipynb (GitHub)](notebooks/03_Baselines_TFIDF_LR_SVM.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1swGOnQTKFJ7AdwWeURLvads2kpBqzPDn)  
-   [04_transformer_distilbert.ipynb (GitHub)](notebooks/04_transformer_distilbert.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1UgOQA5L0S4m-OsTCVY9f7aONCPcykmDV)  
-   [05_transformer_biobert.ipynb (GitHub)](notebooks/05_transformer_biobert.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1LQNZSgwLzN2GjOGNEZjUZJfOsTvFC6yl)  
-   [06_pubmedbert_training.ipynb (GitHub)](notebooks/06_pubmedbert_training.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1C3idcaweut3V4hxMf5zcCIPhbJTmDJVb)
+   [03_Baselines_TFIDF_LR_SVM.ipynb (GitHub)](03_Baselines_TFIDF_LR_SVM.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1swGOnQTKFJ7AdwWeURLvads2kpBqzPDn)  
+   [04_transformer_distilbert.ipynb (GitHub)](04_transformer_distilbert.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1UgOQA5L0S4m-OsTCVY9f7aONCPcykmDV)  
+   [05_transformer_biobert.ipynb (GitHub)](05_transformer_biobert.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1LQNZSgwLzN2GjOGNEZjUZJfOsTvFC6yl)  
+   [06_pubmedbert_training.ipynb (GitHub)](06_pubmedbert_training.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1C3idcaweut3V4hxMf5zcCIPhbJTmDJVb)
 
 4. **Compare and select:**  
-   [07_model_comparison.ipynb (GitHub)](notebooks/07_model_comparison.ipynb) | [Open in Colab](https://colab.research.google.com/drive/13uH5BAeFE8lAn_SQUXn-fzp_viRNqXMh)
+   [07_model_comparison.ipynb (GitHub)](07_model_comparison.ipynb) | [Open in Colab](https://colab.research.google.com/drive/13uH5BAeFE8lAn_SQUXn-fzp_viRNqXMh)
 
 5. Return to the main report:  
-   [00_main.ipynb (GitHub)](notebooks/00_main.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1VdvHcuBEOoNfz0m4SP5nCG6Mx95_i3kW?usp=sharing)
+   [00_main.ipynb (GitHub)](00_main.ipynb) | [Open in Colab](https://colab.research.google.com/drive/1VdvHcuBEOoNfz0m4SP5nCG6Mx95_i3kW?usp=sharing)
 
 Artifacts produced include: `preds/val_probs.csv`, `preds/test_probs.csv`, `thresholds.json`, per-model `metrics_*.json`, and `artifacts/comparison/all_models_summary.csv`.
 
